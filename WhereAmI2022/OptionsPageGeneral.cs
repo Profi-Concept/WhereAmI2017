@@ -1,12 +1,13 @@
 ﻿using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ComponentModelHost;
-using Microsoft.VisualStudio.Settings;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
+
 using WhereAmI2017.Converters;
 
 namespace WhereAmI2017
@@ -19,7 +20,7 @@ namespace WhereAmI2017
 	[Guid(Constants.GuidPageGeneral)]
 	public class OptionsPageGeneral : Microsoft.VisualStudio.Shell.DialogPage
 	{
-		IWhereAmISettings settings
+		private IWhereAmISettings settings
 		{
 			get
 			{
@@ -119,7 +120,7 @@ namespace WhereAmI2017
 			{
 				if (settings == null)
 				{
-					return (Theme)0;
+					return 0;
 				}
 				return settings.Theme;
 			}
@@ -233,11 +234,17 @@ namespace WhereAmI2017
 				settings.Opacity = currentValues.Opacity;
 
 				if (WhereAmISettings.DarkThemeDefaults().Equals(currentValues))
+				{
 					settings.Theme = Theme.Dark;
+				}
 				else if (WhereAmISettings.LightThemeDefaults().Equals(currentValues))
+				{
 					settings.Theme = Theme.Light;
+				}
 				else
+				{
 					settings.Theme = Theme.Custom;
+				}
 
 				settings.Store();
 
