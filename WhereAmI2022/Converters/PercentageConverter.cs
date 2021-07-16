@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 
-namespace WhereAmI2017.Converters
+namespace WhereAmI2022.Converters
 {
 	internal class PercentageConverter : DoubleConverter
 	{

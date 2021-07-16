@@ -7,7 +7,7 @@ using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace WhereAmI2017
+namespace WhereAmI2022
 {
 	[Export(typeof(IWhereAmISettings))]
 	public class WhereAmISettings : IWhereAmISettings

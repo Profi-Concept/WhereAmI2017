@@ -8,9 +8,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-using WhereAmI2017.Converters;
+using WhereAmI2022.Converters;
 
-namespace WhereAmI2017
+namespace WhereAmI2022
 {
 	/// <summary>
 	// Extends the standard dialog functionality for implementing ToolsOptions pages,

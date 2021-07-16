@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.Utilities;
 
 using System.ComponentModel.Composition;
 
-namespace WhereAmI2017
+namespace WhereAmI2022
 {
 	/// <summary>
 	/// Establishes an <see cref="IAdornmentLayer"/> to place the adornment on and exports the <see cref="IWpfTextViewCreationListener"/>

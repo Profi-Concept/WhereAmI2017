@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WhereAmI2017
+namespace WhereAmI2022
 {
 	/// <summary>
 	/// Available positions for the adornment layer

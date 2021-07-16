@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace WhereAmI2017
+namespace WhereAmI2022
 {
 	/// <summary>
 	/// Settings for this extension, to be stored at user-level

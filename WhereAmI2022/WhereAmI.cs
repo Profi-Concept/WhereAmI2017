@@ -13,7 +13,7 @@ using Microsoft.VisualStudio.Text.Editor;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace WhereAmI2017
+namespace WhereAmI2022
 {
 	/// <summary>
 	/// Adornment class that draws a square box in the top right hand corner of the viewport

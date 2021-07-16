@@ -1,4 +1,4 @@
-﻿namespace WhereAmI2017
+﻿namespace WhereAmI2022
 {
 	/// <summary>
 	/// Enumerator to represent the theme actually applied
