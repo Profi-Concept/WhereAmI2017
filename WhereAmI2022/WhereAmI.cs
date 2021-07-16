@@ -40,6 +40,7 @@ namespace WhereAmI2022
 		/// <param name="view">The <see cref="IWpfTextView"/> upon which the adornment will be drawn</param>
 		public WhereAmI(IWpfTextView view, IWhereAmISettings settings)
 		{
+			ThreadHelper.ThrowIfNotOnUIThread();
 			_view = view;
 			_settings = settings;
 
@@ -56,7 +57,7 @@ namespace WhereAmI2022
 			else if (view.TextBuffer.Properties.TryGetProperty<object>("IdentityMapping", out obj))
 			{
 				// Try to get the ITextDocument from the second level (e.g. Razor files)
-				if ((obj as ITextBuffer) != null)
+				if (obj is ITextBuffer)
 				{
 					(obj as ITextBuffer).Properties.TryGetProperty<ITextDocument>(typeof(ITextDocument), out textDoc);
 				}
@@ -199,6 +200,7 @@ namespace WhereAmI2022
 		/// <returns></returns>
 		public static Project GetContainingProject(string fileName)
 		{
+			ThreadHelper.ThrowIfNotOnUIThread();
 			if (!string.IsNullOrEmpty(fileName))
 			{
 				var dte2 = (EnvDTE80.DTE2)Package.GetGlobalService(typeof(Microsoft.VisualStudio.Shell.Interop.SDTE));
@@ -223,12 +225,9 @@ namespace WhereAmI2022
 		/// <returns></returns>
 		private static string GetFolderDiffs(string filePath, string folderPath)
 		{
-			if (!string.IsNullOrEmpty(folderPath))
-			{
-				return System.IO.Path.GetDirectoryName(filePath).Replace(System.IO.Path.GetDirectoryName(folderPath), "").Replace("\\", "/").ToLower();
-			}
-
-			return "";
+			return !string.IsNullOrEmpty(folderPath)
+								? System.IO.Path.GetDirectoryName(filePath).Replace(System.IO.Path.GetDirectoryName(folderPath), "").Replace("\\", "/").ToLower()
+								: "";
 		}
 	}
 }

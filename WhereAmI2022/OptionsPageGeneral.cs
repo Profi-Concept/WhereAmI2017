@@ -118,11 +118,7 @@ namespace WhereAmI2022
 		{
 			get
 			{
-				if (settings == null)
-				{
-					return 0;
-				}
-				return settings.Theme;
+				return settings == null ? 0 : settings.Theme;
 			}
 			set
 			{
