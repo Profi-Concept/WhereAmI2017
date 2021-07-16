@@ -13,9 +13,9 @@ using WhereAmI2022.Converters;
 namespace WhereAmI2022
 {
 	/// <summary>
-	// Extends the standard dialog functionality for implementing ToolsOptions pages,
-	// with support for the Visual Studio automation model, Windows Forms, and state
-	// persistence through the Visual Studio settings mechanism.
+	/// Extends the standard dialog functionality for implementing ToolsOptions pages,
+	/// with support for the Visual Studio automation model, Windows Forms, and state
+	/// persistence through the Visual Studio settings mechanism.
 	/// </summary>
 	[Guid(Constants.GuidPageGeneral)]
 	public class OptionsPageGeneral : Microsoft.VisualStudio.Shell.DialogPage
