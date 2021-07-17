@@ -46,6 +46,8 @@ namespace WhereAmI2022
 			Opacity = 1;
 		}
 
+		private DialogPage dialogPage1;
+
 		#endregion
 
 		#region Properties
@@ -266,6 +268,10 @@ namespace WhereAmI2022
 
 			Position = settings.Position;
 			Opacity = settings.Opacity;
+		}
+
+		private void InitializeComponent()
+		{
 		}
 	}
 }
