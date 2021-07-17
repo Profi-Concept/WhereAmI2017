@@ -25,9 +25,9 @@ namespace WhereAmI2022
 		[ImportingConstructor]
 		public WhereAmISettings(SVsServiceProvider vsServiceProvider) : this()
 		{
-			var shellSettingsManager = new ShellSettingsManager(vsServiceProvider);
-			writableSettingsStore = shellSettingsManager.GetWritableSettingsStore(SettingsScope.Remote);
 
+			var shellSettingsManager = new ShellSettingsManager(vsServiceProvider);
+			writableSettingsStore = shellSettingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
 			LoadSettings();
 		}
 

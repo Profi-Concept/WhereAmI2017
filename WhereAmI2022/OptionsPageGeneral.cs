@@ -1,7 +1,5 @@
-﻿using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.ComponentModelHost;
+﻿using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
 
 using System;
 using System.ComponentModel;
@@ -18,7 +16,7 @@ namespace WhereAmI2022
 	/// persistence through the Visual Studio settings mechanism.
 	/// </summary>
 	[Guid(Constants.GuidPageGeneral)]
-	public class OptionsPageGeneral : Microsoft.VisualStudio.Shell.DialogPage
+	public class OptionsPageGeneral : DialogPage
 	{
 		private IWhereAmISettings settings
 		{
@@ -45,8 +43,6 @@ namespace WhereAmI2022
 
 			Opacity = 1;
 		}
-
-		private DialogPage dialogPage1;
 
 		#endregion
 
@@ -203,51 +199,51 @@ namespace WhereAmI2022
 				Opacity = Opacity
 			};
 
-			int result = (int)VSConstants.MessageBoxResult.IDOK;
+			//int result = (int)VSConstants.MessageBoxResult.IDOK;
 
-			if (!storedValues.Equals(currentValues))
+			//if (!storedValues.Equals(currentValues))
+			//{
+			//	result = VsShellUtilities.ShowMessageBox(Site, Resources.MessageOnApplyEntered, Resources.Confirm, OLEMSGICON.OLEMSGICON_QUERY, OLEMSGBUTTON.OLEMSGBUTTON_OKCANCEL, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+			//}
+
+			//if (result == (int)VSConstants.MessageBoxResult.IDCANCEL)
+			//{
+			//	e.ApplyBehavior = ApplyKind.Cancel;
+			//}
+			//else if (e.ApplyBehavior == ApplyKind.Apply)
+			//{
+			settings.FilenameColor = currentValues.FilenameColor;
+			settings.FoldersColor = currentValues.FoldersColor;
+			settings.ProjectColor = currentValues.ProjectColor;
+
+			settings.FilenameSize = currentValues.FilenameSize;
+			settings.FoldersSize = currentValues.FoldersSize;
+			settings.ProjectSize = currentValues.ProjectSize;
+
+			settings.ViewFilename = currentValues.ViewFilename;
+			settings.ViewFolders = currentValues.ViewFolders;
+			settings.ViewProject = currentValues.ViewProject;
+
+			settings.Position = currentValues.Position;
+			settings.Opacity = currentValues.Opacity;
+
+			if (WhereAmISettings.DarkThemeDefaults().Equals(currentValues))
 			{
-				result = VsShellUtilities.ShowMessageBox(Site, Resources.MessageOnApplyEntered, Resources.Confirm, OLEMSGICON.OLEMSGICON_QUERY, OLEMSGBUTTON.OLEMSGBUTTON_OKCANCEL, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+				settings.Theme = Theme.Dark;
+			}
+			else if (WhereAmISettings.LightThemeDefaults().Equals(currentValues))
+			{
+				settings.Theme = Theme.Light;
+			}
+			else
+			{
+				settings.Theme = Theme.Custom;
 			}
 
-			if (result == (int)VSConstants.MessageBoxResult.IDCANCEL)
-			{
-				e.ApplyBehavior = ApplyKind.Cancel;
-			}
-			else if (e.ApplyBehavior == ApplyKind.Apply)
-			{
-				settings.FilenameColor = currentValues.FilenameColor;
-				settings.FoldersColor = currentValues.FoldersColor;
-				settings.ProjectColor = currentValues.ProjectColor;
+			settings.Store();
 
-				settings.FilenameSize = currentValues.FilenameSize;
-				settings.FoldersSize = currentValues.FoldersSize;
-				settings.ProjectSize = currentValues.ProjectSize;
-
-				settings.ViewFilename = currentValues.ViewFilename;
-				settings.ViewFolders = currentValues.ViewFolders;
-				settings.ViewProject = currentValues.ViewProject;
-
-				settings.Position = currentValues.Position;
-				settings.Opacity = currentValues.Opacity;
-
-				if (WhereAmISettings.DarkThemeDefaults().Equals(currentValues))
-				{
-					settings.Theme = Theme.Dark;
-				}
-				else if (WhereAmISettings.LightThemeDefaults().Equals(currentValues))
-				{
-					settings.Theme = Theme.Light;
-				}
-				else
-				{
-					settings.Theme = Theme.Custom;
-				}
-
-				settings.Store();
-
-				base.OnApply(e);
-			}
+			base.OnApply(e);
+			//}
 		}
 
 		#endregion Event Handlers
